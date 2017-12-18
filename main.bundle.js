@@ -110,7 +110,7 @@ var postColors = function postColors(text, colorNames) {
   var matches = [];
   $.each(text, function (i, color) {
     if (colorNames.includes(color)) {
-      $.post(api + 'api/v1/colors', { color: { value: color } });
+      $.post(api + 'api/v1/colors', { color: { value: '' + color } });
     }
   });
 };
