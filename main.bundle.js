@@ -84,6 +84,11 @@ var api = 'https://color-swatch-api.herokuapp.com/';
 $(document).ready(function () {
   topColor();
   getColors();
+  $('button').keypress(function (e) {
+    if (e.which == 13) {
+      $('button').click();
+    }
+  });
 });
 
 var topColor = function topColor() {
@@ -93,7 +98,13 @@ var topColor = function topColor() {
 };
 
 var getColors = function getColors() {
-  $('section.text-submission').on('click', 'button', function () {
+  $('section.text-submission').on('click keydown', 'button', function (e) {
+    debugger;
+    // if(e.which == 13){
+    //   e.preventDefault()
+    //   $('button').click()
+    //   return false
+    // }
     var text = $('textarea').val().toLowerCase().replace(/[,. ]+/g, " ").trim().split(' ');
     var unique = Array.from(new Set(text));
     var colorNames = Object.keys(_colors2.default);
